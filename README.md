@@ -25,3 +25,5 @@ where
   -o output folder for downloaded images
 ```
 
+### Acknowledgement
+Thank you Francois Chollet for parsing ImageNet and creating imagenet_class_index.json 
