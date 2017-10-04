@@ -62,8 +62,15 @@ print "[LOG]: output folder: {}".format(output_folder)
 
 # Downloading images from url
 for url, imid in tqdm(zip(urls_wnid, imageids)):
+
+    fname = imid 
+    if url.strip().split(".")[-1].lower() in ['jpg', 'gif', 'jpeg','png', 'bmp', 'thb', 'jpe', 'tif', 'pjpeg']:
+        fname = fname + "." + url.strip().split(".")[-1] # keep the file extension in fname 
+    else: 
+        fname = fname + ".jpg" # default use .jpg file extension
+
     try:
-        urllib.urlretrieve(url, filename=os.path.join(output_folder, imid+".jpg"))
+        urllib.urlretrieve(url, filename=os.path.join(output_folder, fname))
     except:
         print "Could not retrieve url: ", url, " | skipping" 
 
